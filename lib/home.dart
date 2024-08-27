@@ -20,7 +20,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.yellow[800],
+        backgroundColor: Colors.yellow[900],
         title: Text("Name"),
       ),
       bottomNavigationBar: BottomNavigationBar(
