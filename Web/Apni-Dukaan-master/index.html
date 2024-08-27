@@ -9,9 +9,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
+    <link rel="stylesheet" href="styles.css" />
     <style>
       body {
-        font-family: 'Arial', sans-serif;
+        font-family: Georgia, 'Times New Roman', Times, serif;
         margin: 0;
         padding: 0;
         background-color: #f6eedf;
@@ -33,12 +34,14 @@
       .hero-section {
         text-align: center;
         padding: 250px;
+        font-family: 'perfectly-vintages', sans-serif;
         background-image: url('Images/frameHome1.jpeg');
         background-size: cover;
         color: #ab4b61;
       }
 
       .hero-section h1 {
+        font-family: Georgia, 'Times New Roman', Times, serif;
         font-size: 50px;
         margin-bottom: 10px;
       }
@@ -48,7 +51,8 @@
       }
 
       .explore-btn {
-        background-color: #f88d6c;
+        background-color: #9e2a07;
+        font-family: Georgia, 'Times New Roman', Times, serif;
         padding: 10px 20px;
         color: white;
         border: none;
@@ -59,9 +63,10 @@
 
       .subheading {
         text-align: center;
+        font-family: Georgia, 'Times New Roman', Times, serif;
         padding: 20px;
         font-size: 24px;
-        color: #8a644a;
+        color: #b5600c;
       }
 
       .products-section {
@@ -73,8 +78,8 @@
 
       .product-card {
         background-color: #f5f0e3;
-        width: 150px;
-        height: 150px;
+        width: 200px;
+        height: 200px;
         border-radius: 10px;
         overflow: hidden;
         display: flex;
@@ -102,8 +107,9 @@
       }
 
       .content-text {
+        font-family: Georgia, 'Times New Roman', Times, serif;
         font-size: 18px;
-        color: #5c4433;
+        color: #4e2406;
       }
 
       footer {
@@ -180,7 +186,14 @@
       <p>
         Experience the essence of India through authentic, handcrafted treasures
       </p>
-      <button class="explore-btn">Explore</button>
+      <button id="exploreBtn" class="explore-btn">Explore</button>
+      <script>
+        document
+          .getElementById('exploreBtn')
+          .addEventListener('click', function () {
+            window.location.href = 'login.html'
+          })
+      </script>
     </section>
 
     <section class="subheading">
