@@ -1,5 +1,6 @@
 
 import 'package:ecommerce/authpages/loginpage.dart';
+import 'package:ecommerce/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: Home(),
     );
   }
 }

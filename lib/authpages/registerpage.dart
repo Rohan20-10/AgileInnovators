@@ -5,8 +5,22 @@ import 'package:flutter/material.dart';
 
 import '../widgets/constants.dart';
 
-class Registorpage extends StatelessWidget {
-  const Registorpage({super.key});
+class Registerpage extends StatefulWidget {
+  const Registerpage({super.key});
+
+  @override
+  State<Registerpage> createState() => _RegisterpageState();
+}
+
+class _RegisterpageState extends State<Registerpage> {
+bool _obscure = true;
+
+void _togglePasswordVisibility(){
+  setState(() {
+    _obscure = !_obscure;
+  });
+
+}
 
   @override
   Widget build(BuildContext context) {
@@ -14,41 +28,49 @@ class Registorpage extends StatelessWidget {
     final height = size.height;
     final width = size.width;
     return Scaffold(
-      body:SafeArea(
-        child: SingleChildScrollView(
+      body:Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(image: AssetImage("assets/img/loginimage.jpeg"),fit: BoxFit.cover),
+        ),
+        height: height,
+        width: width,
+        child: Center(
           child: Container(
-            height: height,
-            width: width,
+            width: width*0.95,height: height*0.65,
+
+            decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.3),
+                    spreadRadius: 5,
+                    blurRadius: 10,)
+                ],
+                color: Colors.white.withOpacity(0.82),
+                borderRadius: BorderRadius.circular(10)
+
+            ),
             child: Form(
               // form key
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Center(
+                    child: Text(
+                      "Welcome to Apni Dukaan",
+                      style: TextStyle(
+                        color: Constants().primarycolor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
+                      ),
+                    ),
+
+                  ),
                   SizedBox(
                     height: 15,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 8),
-                    child: Text(
-                      "AppName",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 35,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 8),
-                    child: Text(
-                      "Welcome to our store",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 25,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 8),
@@ -57,6 +79,7 @@ class Registorpage extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
+                        color: Constants().primarycolor,
 
                       ),
                     ),
@@ -84,7 +107,7 @@ class Registorpage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 25,
+                    height: 20,
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 8),
@@ -93,6 +116,7 @@ class Registorpage extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
+                        color: Constants().primarycolor,
 
                       ),
                     ),
@@ -100,21 +124,24 @@ class Registorpage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: TextFormField(
+                      // email validator
 
-                      //validator for email
+
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        border:  OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.black)),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
                         focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.black)),
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
                         hintStyle: TextStyle(fontSize: 14),
                         hintText: "Enter your email",
                       ),
                     ),
                   ),
                   SizedBox(
-                    height: 25,
+                    height: 20,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 8),
@@ -123,6 +150,7 @@ class Registorpage extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
+                        color: Constants().primarycolor,
 
                       ),
                     ),
@@ -130,53 +158,61 @@ class Registorpage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: TextFormField(
+                      //password validator
 
-                      keyboardType: TextInputType.number,
                       validator: (val) {
                         if (val!.length < 6) {
-                          return "Password must be atleast 6 character";
+                          return "Password must be at least 6 characters";
                         } else {
                           return null;
                         }
                       },
+                      obscureText: _obscure,
                       decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black)
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black)),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+
                         hintStyle: TextStyle(fontSize: 14),
                         hintText: "Enter your password",
+
                         suffixIcon: IconButton(
-                            onPressed: (){
-                              // visibility tap
-                            },
-                            icon: Icon(
-                               Icons.visibility_off)),
+                          onPressed: _togglePasswordVisibility,
+                          icon: Icon(
+                              _obscure?Icons.visibility_off
+                                  :Icons.visibility
+                          ),  //password visibility
+                        ),
                       ),
                     ),
                   ),
+
+
                   SizedBox(
-                    height: 40,
+                    height: 35,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: SizedBox(
-                      height: height * 0.08,
+                      height: height * 0.07,
                       width: width,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Constants().primarycolor,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(19),
+                            borderRadius: BorderRadius.circular(11),
                           ),
                         ),
                         onPressed: () {
-                          // register function
+                          // login function
                         },
                         child: Text(
                           "Sign Up",
-                          style: TextStyle(color: Colors.white, fontSize: 15),
+                          style:
+                          TextStyle(color: Colors.white, fontSize: 15,),
                         ),
                       ),
                     ),
@@ -186,29 +222,36 @@ class Registorpage extends StatelessWidget {
                   ),
                   Center(
                     child: Text.rich(
-                        textAlign: TextAlign.center,
-                        TextSpan(
-                            text: "Already have an account? ",
+                      textAlign: TextAlign.center,
+                      TextSpan(
+                        text: "Already have an account? ",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
+                        ),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: "Sign In",
                             style: TextStyle(
-                                fontWeight: FontWeight.w500, fontSize: 14),
-                            children: <TextSpan>[
-                              TextSpan(
-                                  text: "Log in",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14,
-                                      decoration: TextDecoration.underline),
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () {
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
-                                    })
-                            ])),
+                              fontWeight: FontWeight.w500,
+                              fontSize: 14,
+                              decoration: TextDecoration.underline,
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginPage()));
+                              },
+                          )
+                        ],
+                      ),
+                    ),
                   )
                 ],
               ),
             ),
           ),
         ),
+
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'package:ecommerce/pages/account_page.dart';
 import 'package:ecommerce/pages/cart_page.dart';
 import 'package:ecommerce/pages/category_page.dart';
 import 'package:ecommerce/pages/home_page.dart';
+import 'package:ecommerce/widgets/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -20,7 +21,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.yellow[800],
+        backgroundColor: Constants().primarycolor,
         title: Text("Name"),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -32,7 +33,7 @@ class _HomeState extends State<Home> {
           });
         },
         unselectedItemColor: Colors.black,
-        selectedItemColor: Colors.yellow[900],
+        selectedItemColor:Constants().primarycolor,
         items: [
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.home),
