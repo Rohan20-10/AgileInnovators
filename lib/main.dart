@@ -1,5 +1,6 @@
-import 'package:ecommerce/home.dart';
-import 'package:ecommerce/pages/item_details.dart';
+import 'package:ecommerce/authpages/seller_address.dart';
+import 'package:ecommerce/authpages/seller_register.dart';
+import 'package:ecommerce/pages/seller/seller_home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: SellerAddress(),
     );
   }
 }
