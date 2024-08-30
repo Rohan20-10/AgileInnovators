@@ -4,7 +4,6 @@ const CategorySchema = new mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,    
     name: {
         type: String,
-        enum: ['Puja Samagri', 'Traditional Attires', 'Handicrafts'],
         required: true,
         unique: true,
     },

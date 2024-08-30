@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const AddressSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
-  user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // Buyer or Seller
+  user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // Consumer or Merchant
   street: String,
   city: String,
   state: String,
