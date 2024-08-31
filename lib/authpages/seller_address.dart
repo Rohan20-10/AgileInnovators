@@ -1,6 +1,5 @@
-import 'package:ecommerce/pages/seller/seller_home.dart';
+import 'package:ecommerce/pages/seller/bottombar.dart';
 import 'package:ecommerce/widgets/constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +18,7 @@ class _SellerAddressState extends State<SellerAddress> {
     final width = size.width;
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage("assets/img/loginimage.jpeg"),
               fit: BoxFit.cover),
@@ -46,7 +45,7 @@ class _SellerAddressState extends State<SellerAddress> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Center(
@@ -59,11 +58,11 @@ class _SellerAddressState extends State<SellerAddress> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 8),
+                      padding: const EdgeInsets.only(left: 8),
                       child: Text(
                         "Store Name",
                         style: TextStyle(
@@ -73,9 +72,9 @@ class _SellerAddressState extends State<SellerAddress> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8),
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.black)),
                           hintStyle: TextStyle(fontSize: 14),
@@ -90,11 +89,11 @@ class _SellerAddressState extends State<SellerAddress> {
                         },
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 8),
+                      padding: const EdgeInsets.only(left: 8),
                       child: Text(
                         "Pincode",
                         style: TextStyle(
@@ -104,9 +103,9 @@ class _SellerAddressState extends State<SellerAddress> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8),
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.black)),
                           hintStyle: TextStyle(fontSize: 14),
@@ -122,11 +121,11 @@ class _SellerAddressState extends State<SellerAddress> {
                         },
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 8),
+                      padding: const EdgeInsets.only(left: 8),
                       child: Text(
                         "Address Line 1",
                         style: TextStyle(
@@ -136,9 +135,9 @@ class _SellerAddressState extends State<SellerAddress> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8),
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.black)),
                           hintStyle: TextStyle(fontSize: 14),
@@ -153,11 +152,11 @@ class _SellerAddressState extends State<SellerAddress> {
                         },
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 8),
+                      padding: const EdgeInsets.only(left: 8),
                       child: Text(
                         "Address Line 2",
                         style: TextStyle(
@@ -167,9 +166,9 @@ class _SellerAddressState extends State<SellerAddress> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8),
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.black)),
                           hintStyle: TextStyle(fontSize: 14),
@@ -184,11 +183,11 @@ class _SellerAddressState extends State<SellerAddress> {
                         },
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 8),
+                      padding: const EdgeInsets.only(left: 8),
                       child: Text(
                         "City",
                         style: TextStyle(
@@ -198,9 +197,9 @@ class _SellerAddressState extends State<SellerAddress> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8),
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.black)),
                           hintStyle: TextStyle(fontSize: 14),
@@ -215,11 +214,11 @@ class _SellerAddressState extends State<SellerAddress> {
                         },
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 8),
+                      padding: const EdgeInsets.only(left: 8),
                       child: Text(
                         "State",
                         style: TextStyle(
@@ -229,9 +228,9 @@ class _SellerAddressState extends State<SellerAddress> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8),
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.black)),
                           hintStyle: TextStyle(fontSize: 14),
@@ -246,7 +245,7 @@ class _SellerAddressState extends State<SellerAddress> {
                         },
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Padding(
@@ -265,9 +264,9 @@ class _SellerAddressState extends State<SellerAddress> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => SellerHome()));
+                                    builder: (context) => const Bottombar()));
                           },
-                          child: Text(
+                          child: const Text(
                             "Sign up",
                             style: TextStyle(
                               color: Colors.white,
@@ -277,7 +276,7 @@ class _SellerAddressState extends State<SellerAddress> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 22,
                     ),
                     Center(
@@ -285,14 +284,14 @@ class _SellerAddressState extends State<SellerAddress> {
                         textAlign: TextAlign.center,
                         TextSpan(
                           text: "Already have an account? ",
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 14,
                           ),
                           children: <TextSpan>[
                             TextSpan(
                               text: "Sign In",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 14,
                                 decoration: TextDecoration.underline,
@@ -303,7 +302,7 @@ class _SellerAddressState extends State<SellerAddress> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 22,
                     ),
                     Center(
@@ -311,14 +310,14 @@ class _SellerAddressState extends State<SellerAddress> {
                         textAlign: TextAlign.center,
                         TextSpan(
                           text: "Want to register as a buyer? ",
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 14,
                           ),
                           children: <TextSpan>[
                             TextSpan(
                               text: "Register here",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 14,
                                 decoration: TextDecoration.underline,

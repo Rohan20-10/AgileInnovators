@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce/pages/item_details.dart';
 import 'package:ecommerce/widgets/constants.dart';
 import 'package:ecommerce/widgets/search.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/widgets/category.dart';
 

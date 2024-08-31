@@ -1,5 +1,6 @@
 import 'package:ecommerce/authpages/registerpage.dart';
 import 'package:ecommerce/authpages/seller_login.dart';
+import 'package:ecommerce/home.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -22,13 +23,14 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     final height = size.height;
     final width = size.width;
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage("assets/img/loginimage.jpeg"),
               fit: BoxFit.cover),
@@ -56,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   // login image
                   // Placeholder(),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Center(
@@ -69,11 +71,11 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 8),
+                    padding: const EdgeInsets.only(left: 8),
                     child: Text(
                       "Email",
                       style: TextStyle(
@@ -88,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: TextFormField(
                       // email validator
                       keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.black),
                         ),
@@ -100,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 25,
                   ),
                   Padding(
@@ -127,13 +129,13 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       obscureText: _obscure,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(
+                        border: const OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.black),
                         ),
-                        focusedBorder: OutlineInputBorder(
+                        focusedBorder: const OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.black),
                         ),
-                        hintStyle: TextStyle(fontSize: 14),
+                        hintStyle: const TextStyle(fontSize: 14),
                         hintText: "Enter your password",
                         suffixIcon: IconButton(
                           onPressed: _togglePasswordVisibility,
@@ -144,7 +146,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   Padding(
@@ -166,7 +168,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
 
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   Padding(
@@ -182,9 +184,10 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         onPressed: () {
-                          // login function
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => Home()));
                         },
-                        child: Text(
+                        child: const Text(
                           "Sign In",
                           style: TextStyle(
                             color: Colors.white,
@@ -194,7 +197,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 22,
                   ),
                   Center(
@@ -202,14 +205,14 @@ class _LoginPageState extends State<LoginPage> {
                       textAlign: TextAlign.center,
                       TextSpan(
                         text: "Don't have an account? ",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
                         ),
                         children: <TextSpan>[
                           TextSpan(
                             text: "SignUp",
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 14,
                               decoration: TextDecoration.underline,
@@ -219,14 +222,15 @@ class _LoginPageState extends State<LoginPage> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Registerpage()));
+                                        builder: (context) =>
+                                            const Registerpage()));
                               },
                           )
                         ],
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 22,
                   ),
                   Center(
@@ -234,14 +238,14 @@ class _LoginPageState extends State<LoginPage> {
                       textAlign: TextAlign.center,
                       TextSpan(
                         text: "Want to Login as a Seller? ",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
                         ),
                         children: <TextSpan>[
                           TextSpan(
                             text: "Login",
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 14,
                               decoration: TextDecoration.underline,
@@ -251,7 +255,8 @@ class _LoginPageState extends State<LoginPage> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => SellerLogin()));
+                                        builder: (context) =>
+                                            const SellerLogin()));
                               },
                           )
                         ],
