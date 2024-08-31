@@ -1,6 +1,8 @@
 // server.js
 const express = require('express');
 const session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 const dotenv = require('dotenv');
 const connectDB = require('./config/db'); // Correctly import connectDB
 const User = require('./models/User');
@@ -24,8 +26,40 @@ app.use(session({
   secret: 'your_secret_key',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false } // Set to true if using HTTPS
+  cookie: { 
+    secure: false, // Set to true if using HTTPS
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+  }
 }));
+
+// Initialize Passport and restore authentication state, if any, from the session
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Passport configuration
+passport.use(new LocalStrategy(
+  { usernameField: 'email' },
+  function(email, password, done) {
+    User.findOne({ email: email }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) { return done(null, false, { message: 'Incorrect email.' }); }
+      user.validPassword(password).then(isValid => {
+        if (!isValid) { return done(null, false, { message: 'Incorrect password.' }); }
+        return done(null, user);
+      }).catch(err => done(err));
+    });
+  }
+));
+
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function (err, user) {
+    done(err, user);
+  });
+});
 
 // Set view engine
 app.set('view engine', 'ejs');
@@ -35,12 +69,13 @@ app.set('views', path.join(__dirname, 'views'));
 connectDB();
 
 // Use routes
-app.use('/api/auth', authRoutes);
+// app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 // app.use('/api/orders', orderRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/merchant', merchantRoutes); // Changed from /api/seller to /api/merchant
 app.use('/api/customer', customerRoutes); // Add this line
+app.use('/api/user', userRoutes); // Add this line
 
 // Basic error handling
 app.use((err, req, res, next) => {
