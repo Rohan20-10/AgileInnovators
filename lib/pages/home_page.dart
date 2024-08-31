@@ -1,4 +1,6 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce/pages/item_details.dart';
+import 'package:ecommerce/widgets/constants.dart';
 import 'package:ecommerce/widgets/search.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/widgets/category.dart';
@@ -46,136 +48,191 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Name"),
-        centerTitle: true,
-        backgroundColor: Colors.yellow.shade900,
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SearchWidget(),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Container(
-                height: 160,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.yellow.shade900,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: PageView(
-                    children: [
-                      _buildPageViewItem('assets/img/Product1.jpg'),
-                      _buildPageViewItem('assets/img/Product2.jpg'),
-                      _buildPageViewItem('assets/img/Product3.jpg'),
-                      _buildPageViewItem('assets/img/Product4.webp'),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            CategoryWidget(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              //Icons row change square icon.
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 20),
-                  const Text(
-                    "Trending Products",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  GridView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: trendingProducts.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio:
-                          3 / 4.5, // Adjust the aspect ratio as needed
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                    ),
-                    itemBuilder: (context, index) {
-                      final product = trendingProducts[index];
-                      return GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ItemDetails(
-                                image: product['image']!,
-                                name: product['name']!,
-                                price: product['price']!,
-                                rating: product['rating']!,
-                                reviews: product['reviews']!,
-                              ),
-                            ),
-                          );
-                        },
-                        child: _buildTrendingProductCard(product),
-                      );
-                    },
-                  ),
+                  Container(
+                    // padding: EdgeInsets.only(left: 8),
+                      margin: EdgeInsets.only(left: 15),
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: Constants().lightgrey,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: IconButton(onPressed: () {},
+                          icon: Icon(Icons.crop_square_rounded,
+                            color: Constants().blackcolor,))),
+                  Spacer(),
+                  Container(
+                    // padding: EdgeInsets.only(left: 8),
+                      margin: EdgeInsets.only(right: 15),
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: Constants().lightgrey,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: IconButton(onPressed: () {},
+                          icon: Icon(Icons.notifications_none_rounded,
+                              color: Constants().blackcolor))),
+
                 ],
               ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+              const SearchWidget(),
+              // Padding(
+              //   padding: const EdgeInsets.all(10.0),
+              //   child: Container(
+              //     height: 160,
+              //     width: double.infinity,
+              //     decoration: BoxDecoration(
+              //       color: Colors.yellow.shade900,
+              //       borderRadius: BorderRadius.circular(10),
+              //     ),
+              //     child: ClipRRect(
+              //
+              //       borderRadius: BorderRadius.circular(10),
+              //       child: PageView(
+              //
+              //         children: [
+              //           _buildPageViewItem('assets/img/Product1.jpg'),
+              //           _buildPageViewItem('assets/img/Product2.jpg'),
+              //           _buildPageViewItem('assets/img/Product3.jpg'),
+              //           _buildPageViewItem('assets/img/Product4.webp'),
+              //         ],
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              SizedBox(height: 20,),
+              CarouselSlider(
+                items: [
+                  Promoimage(imageurl: "assets/img/banner_img/banner1.png"),
+                  Promoimage(imageurl: "assets/img/banner_img/banner2.png"),
+                  Promoimage(imageurl: "assets/img/banner_img/banner3.png"),
+                  Promoimage(imageurl: "assets/img/banner_img/banner4.png"),
 
-  Widget _buildPageViewItem(String imagePath) {
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        Image.asset(
-          imagePath,
-          fit: BoxFit.contain,
-        ),
-        Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.black.withOpacity(0.2),
-                Colors.transparent,
-              ],
-              begin: Alignment.bottomCenter,
-              end: Alignment.topCenter,
-            ),
+                ],
+                options: CarouselOptions(
+                  viewportFraction: 1.5,
+                  autoPlay: true,
+
+                ),
+              ),
+              SizedBox(height: 35,),
+              CategoryWidget(),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 10),
+                    const Text(
+                      "Special For You",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    GridView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: trendingProducts.length,
+                      gridDelegate:
+                      const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio:
+                        3 / 4.5, // Adjust the aspect ratio as needed
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                      ),
+                      itemBuilder: (context, index) {
+                        final product = trendingProducts[index];
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    ItemDetails(
+                                      image: product['image']!,
+                                      name: product['name']!,
+                                      price: product['price']!,
+                                      rating: product['rating']!,
+                                      reviews: product['reviews']!,
+                                    ),
+                              ),
+                            );
+                          },
+                          child: _buildTrendingProductCard(product),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
-      ],
+      ),
     );
   }
 
+
+
   Widget _buildTrendingProductCard(Map<String, dynamic> product) {
-    return Card(
-      elevation: 3,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
+    return Container(
+      decoration: BoxDecoration(
+        color: Constants().lightgrey,
+        borderRadius: BorderRadius.circular(15),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.only(left: 9.0,),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AspectRatio(
-              aspectRatio: 1.2,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.asset(
-                  product['image'],
-                  fit: BoxFit.cover,
+            Row(
+              children: [
+                const Spacer(),
+                Container(
+                  height: 32,
+                  width: 32,
+                  decoration: BoxDecoration(
+                    color: Constants().primarycolor,
+                    borderRadius: BorderRadius.only(
+
+                      topRight: Radius.circular(15),
+                      bottomLeft: Radius.circular(5)
+                    ),
+                  ),
+                  child: IconButton(
+                    icon: Icon(
+                        Icons.favorite_border, size: 20, color: Colors.white),
+                    onPressed: () {},
+                    padding: EdgeInsets.zero,
+                    alignment: Alignment.center,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 5,),
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: AspectRatio(
+                aspectRatio: 1.2,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    product['image'],
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
@@ -189,32 +246,59 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 5),
             Text(
               product['price'],
-              style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue),
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Constants().blackcolor,
+              ),
             ),
-            const Spacer(),
+           SizedBox(height: 5,),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    const Icon(Icons.star, size: 16, color: Colors.orange),
-                    Text(
-                      product['rating'] + ' (' + product['reviews'] + ')',
-                      style: const TextStyle(fontSize: 12),
-                    ),
-                  ],
-                ),
-                IconButton(
-                  icon: const Icon(Icons.favorite_border, size: 20),
-                  onPressed: () {},
+                Icon(Icons.star, size: 16, color: Constants().primarycolor),
+                Text(
+                  product['rating'] + ' (' + product['reviews'] + ')',
+                  style: const TextStyle(fontSize: 12),
                 ),
               ],
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+class Promoimage extends StatelessWidget {
+  final String imageurl;
+  const Promoimage({
+    Key? key,
+    required this.imageurl,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Image.asset(
+        imageurl,
+        fit: BoxFit.cover,height: 100,
+      ),
+      height: 100,
+      width: MediaQuery.of(context).size.width * 0.90,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(4.0, 4.0),
+            color: Colors.grey,
+            blurRadius: 15,
+            spreadRadius: 1,
+          ),
+        ],
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:ecommerce/authpages/seller_address.dart';
 import 'package:ecommerce/widgets/constants.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -139,7 +140,7 @@ class _SellerDetailsState extends State<SellerDetails> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const SellerDetails()));
+                                  builder: (context) => const SellerAddress()));
                         },
                         child: const Text(
                           "Next",

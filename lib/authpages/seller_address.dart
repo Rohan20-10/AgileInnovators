@@ -1,4 +1,4 @@
-import 'package:ecommerce/pages/seller/seller_home.dart';
+import 'package:ecommerce/pages/seller/bottombar.dart';
 import 'package:ecommerce/widgets/constants.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -264,7 +264,7 @@ class _SellerAddressState extends State<SellerAddress> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const SellerHome()));
+                                    builder: (context) => const Bottombar()));
                           },
                           child: const Text(
                             "Sign up",

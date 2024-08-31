@@ -1,5 +1,6 @@
 import 'package:ecommerce/authpages/loginpage.dart';
 import 'package:ecommerce/authpages/seller_register.dart';
+import 'package:ecommerce/home.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -193,6 +194,8 @@ class _RegisterpageState extends State<Registerpage> {
                         ),
                         onPressed: () {
                           // login function
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => Home()));
                         },
                         child: const Text(
                           "Sign Up",
