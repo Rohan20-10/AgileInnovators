@@ -2,7 +2,6 @@ import 'package:ecommerce/authpages/registerpage.dart';
 import 'package:ecommerce/authpages/seller_details.dart';
 import 'package:ecommerce/authpages/seller_login.dart';
 import 'package:ecommerce/widgets/constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +28,7 @@ class _SellerRegisterState extends State<SellerRegister> {
     final width = size.width;
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage("assets/img/loginimage.jpeg"),
               fit: BoxFit.cover),
@@ -55,7 +54,7 @@ class _SellerRegisterState extends State<SellerRegister> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Center(
@@ -68,11 +67,11 @@ class _SellerRegisterState extends State<SellerRegister> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 8),
+                    padding: const EdgeInsets.only(left: 8),
                     child: Text(
                       "Fullname",
                       style: TextStyle(
@@ -92,7 +91,7 @@ class _SellerRegisterState extends State<SellerRegister> {
                           return null;
                         }
                       },
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.black)),
                         focusedBorder: OutlineInputBorder(
@@ -102,7 +101,7 @@ class _SellerRegisterState extends State<SellerRegister> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Padding(
@@ -177,11 +176,11 @@ class _SellerRegisterState extends State<SellerRegister> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 8),
+                    padding: const EdgeInsets.only(left: 8),
                     child: Text(
                       "Phone number",
                       style: TextStyle(
@@ -191,9 +190,9 @@ class _SellerRegisterState extends State<SellerRegister> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.black)),
                         hintStyle: TextStyle(fontSize: 14),
@@ -208,7 +207,7 @@ class _SellerRegisterState extends State<SellerRegister> {
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Padding(
@@ -227,9 +226,9 @@ class _SellerRegisterState extends State<SellerRegister> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SellerDetails()));
+                                  builder: (context) => const SellerDetails()));
                         },
-                        child: Text(
+                        child: const Text(
                           "Create an account",
                           style: TextStyle(
                             color: Colors.white,
@@ -239,7 +238,7 @@ class _SellerRegisterState extends State<SellerRegister> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 22,
                   ),
                   Center(
@@ -247,14 +246,14 @@ class _SellerRegisterState extends State<SellerRegister> {
                       textAlign: TextAlign.center,
                       TextSpan(
                         text: "Already have an account? ",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
                         ),
                         children: <TextSpan>[
                           TextSpan(
                             text: "Sign In",
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 14,
                               decoration: TextDecoration.underline,
@@ -264,14 +263,14 @@ class _SellerRegisterState extends State<SellerRegister> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => SellerLogin()));
+                                        builder: (context) => const SellerLogin()));
                               },
                           )
                         ],
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 22,
                   ),
                   Center(
@@ -279,14 +278,14 @@ class _SellerRegisterState extends State<SellerRegister> {
                       textAlign: TextAlign.center,
                       TextSpan(
                         text: "Want to register as a buyer? ",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
                         ),
                         children: <TextSpan>[
                           TextSpan(
                             text: "Register here",
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 14,
                               decoration: TextDecoration.underline,
@@ -296,7 +295,7 @@ class _SellerRegisterState extends State<SellerRegister> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Registerpage()));
+                                        builder: (context) => const Registerpage()));
                               },
                           )
                         ],

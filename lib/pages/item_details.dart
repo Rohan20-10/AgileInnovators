@@ -97,13 +97,13 @@ class _ItemDetailsState extends State<ItemDetails> {
                       ],
                     ),
                     const SizedBox(height: 16),
-                    Card(
+                    const Card(
                       elevation: 4,
                       child: Padding(
-                        padding: const EdgeInsets.all(16.0),
+                        padding: EdgeInsets.all(16.0),
                         child: Text(
                           'Description\n\nThis lightweight fleece top offers warmth and comfort with a stylish quarter-zip design, perfect for traditional outings.',
-                          style: const TextStyle(color: Colors.grey),
+                          style: TextStyle(color: Colors.grey),
                         ),
                       ),
                     ),

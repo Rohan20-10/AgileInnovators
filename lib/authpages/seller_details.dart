@@ -1,5 +1,4 @@
 import 'package:ecommerce/widgets/constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +17,7 @@ class _SellerDetailsState extends State<SellerDetails> {
     final width = size.width;
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage("assets/img/loginimage.jpeg"),
               fit: BoxFit.cover),
@@ -44,7 +43,7 @@ class _SellerDetailsState extends State<SellerDetails> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Center(
@@ -57,11 +56,11 @@ class _SellerDetailsState extends State<SellerDetails> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 8),
+                    padding: const EdgeInsets.only(left: 8),
                     child: Text(
                       "GST number",
                       style: TextStyle(
@@ -71,9 +70,9 @@ class _SellerDetailsState extends State<SellerDetails> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.black)),
                         hintStyle: TextStyle(fontSize: 14),
@@ -89,11 +88,11 @@ class _SellerDetailsState extends State<SellerDetails> {
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 8),
+                    padding: const EdgeInsets.only(left: 8),
                     child: Text(
                       "MSME id",
                       style: TextStyle(
@@ -103,9 +102,9 @@ class _SellerDetailsState extends State<SellerDetails> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.black)),
                         hintStyle: TextStyle(fontSize: 14),
@@ -121,7 +120,7 @@ class _SellerDetailsState extends State<SellerDetails> {
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Padding(
@@ -140,9 +139,9 @@ class _SellerDetailsState extends State<SellerDetails> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SellerDetails()));
+                                  builder: (context) => const SellerDetails()));
                         },
-                        child: Text(
+                        child: const Text(
                           "Next",
                           style: TextStyle(
                             color: Colors.white,
@@ -152,7 +151,7 @@ class _SellerDetailsState extends State<SellerDetails> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 22,
                   ),
                   Center(
@@ -160,14 +159,14 @@ class _SellerDetailsState extends State<SellerDetails> {
                       textAlign: TextAlign.center,
                       TextSpan(
                         text: "Already have an account? ",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
                         ),
                         children: <TextSpan>[
                           TextSpan(
                             text: "Sign In",
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 14,
                               decoration: TextDecoration.underline,
@@ -178,7 +177,7 @@ class _SellerDetailsState extends State<SellerDetails> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 22,
                   ),
                   Center(
@@ -186,14 +185,14 @@ class _SellerDetailsState extends State<SellerDetails> {
                       textAlign: TextAlign.center,
                       TextSpan(
                         text: "Want to register as a buyer? ",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
                         ),
                         children: <TextSpan>[
                           TextSpan(
                             text: "Register here",
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 14,
                               decoration: TextDecoration.underline,

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class SellerHome extends StatefulWidget {
   const SellerHome({super.key});
@@ -10,6 +11,6 @@ class SellerHome extends StatefulWidget {
 class _SellerHomeState extends State<SellerHome> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold();
   }
 }
