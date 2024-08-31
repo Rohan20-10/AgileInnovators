@@ -19,6 +19,7 @@ class _HomeState extends State<Home> {
   List<Widget> _pages = [HomePage(), CartPage(), CategoryPage(), AccountPage()];
   Widget build(BuildContext context) {
     return Scaffold(
+
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: _pageIndex,
