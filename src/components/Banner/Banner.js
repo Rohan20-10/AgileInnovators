@@ -1,38 +1,61 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Slider from 'react-slick'
-import {
-  bannerImgOne,
-  bannerImgTwo,
-  bannerImgThree,
-  woman2,
-  diwali,
-  womanpottery,
-} from '../../assets/images'
-import Image from '../designLayouts/Image'
+import { woman2, diwali, womanpottery } from '../../assets/images'
 
 const CustomSlide = ({ Subtext, imgSrc, text, buttonLink, buttonText }) => (
   <div
     style={{
       position: 'relative',
-      backgroundColor: '#F5F5F3', // Gray background color
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center', // Center vertically
+      alignItems: 'center',
+      height: '100vh', // Ensures the banner takes up the full viewport height
+      overflow: 'hidden',
     }}
   >
+    {/* Image as the full background */}
     <div
       style={{
-        maxWidth: '450px', // Adjust the maxWidth as needed
-        marginRight: '100px', // Add margin between text/button and image
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundImage: `url(${imgSrc})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        zIndex: -1, // Place the image behind the text and button
+      }}
+    />
+
+    {/* Overlay to reduce opacity */}
+    <div
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Black overlay with 50% opacity
+        zIndex: 0, // Behind the text but above the image
+      }}
+    />
+
+    {/* Text and button content */}
+    <div
+      style={{
+        maxWidth: '450px',
+        textAlign: 'left',
+        zIndex: 1, // Ensure text and button appear above the overlay
       }}
     >
       <h1
         style={{
           marginBottom: '15px',
-          fontSize: '2.5rem', // Adjust the font size as needed
-          color: '#000', // Black color
-          fontWeight: '700',
+          fontSize: '2.5rem',
+          color: '#fff', // White color for visibility
+          fontWeight: 'bold', // Bold text
         }}
       >
         {text}
@@ -40,21 +63,19 @@ const CustomSlide = ({ Subtext, imgSrc, text, buttonLink, buttonText }) => (
       <p
         style={{
           marginBottom: '25px',
-          fontSize: '1.5rem', // Adjust the font size as needed
-          color: '#666', // Gray color
+          fontSize: '1.5rem',
+          color: '#ccc', // Light gray for contrast
+          fontWeight: 'bold', // Bold text
         }}
       >
         {Subtext}
       </p>
 
-      <Link to='/about'>
+      <Link to={buttonLink}>
         <button className='bg-primeColor text-white text-lg font-bodyFont w-[185px] h-[50px] hover:bg-black duration-300 font-bold'>
           {buttonText}
         </button>
       </Link>
-    </div>
-    <div style={{ marginLeft: '100px' }}>
-      <Image imgSrc={imgSrc} />
     </div>
   </div>
 )
@@ -177,9 +198,9 @@ const Banner = () => {
       buttonLink: '/contact',
       buttonText: 'Contact-us',
     },
-
     // Add more slides as needed
   ]
+
   return (
     <div className='w-full bg-white'>
       <Slider {...settings}>
