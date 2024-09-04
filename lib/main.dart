@@ -1,7 +1,5 @@
 import 'package:ecommerce/authpages/loginpage.dart';
-import 'package:ecommerce/authpages/seller_address.dart';
-import 'package:ecommerce/authpages/seller_register.dart';
-import 'package:ecommerce/home.dart';
+
 
 import 'package:ecommerce/models/cart_model.dart';
 
@@ -21,10 +19,17 @@ class MyApp extends StatelessWidget {
 
   // This widget is the root of your application.
   @override
+
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        textTheme: GoogleFonts.mulishTextTheme(
+          Theme.of(context).textTheme,
+        ),
+      ),
+
       home: LoginPage(),
     );
   }
