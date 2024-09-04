@@ -22,6 +22,7 @@ class _SellerLoginState extends State<SellerLogin> {
       _obscure = !_obscure;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -183,8 +184,10 @@ class _SellerLoginState extends State<SellerLogin> {
                           ),
                         ),
                         onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Bottombar()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Bottombar()));
                         },
                         child: const Text(
                           "Sign In",
