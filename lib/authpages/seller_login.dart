@@ -63,7 +63,7 @@ class _SellerLoginState extends State<SellerLogin> {
                   ),
                   Center(
                     child: Text(
-                      "Apni Dukaan(Seller)",
+                      "DesiCourier(Seller)",
                       style: TextStyle(
                         color: Constants().primarycolor,
                         fontWeight: FontWeight.bold,
