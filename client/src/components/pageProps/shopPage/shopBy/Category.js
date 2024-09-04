@@ -16,19 +16,31 @@ const Category = () => {
   const category = [
     {
       _id: 9006,
-      title: 'Accessories',
-    },
-    {
-      _id: 9007,
-      title: 'Clothes',
-    },
-    {
-      _id: 9008,
       title: 'Puja Samagri',
     },
     {
+      _id: 9007,
+      title: 'Footware',
+    },
+    {
+      _id: 9008,
+      title: 'Traditional Attire',
+    },
+    {
       _id: 9009,
-      title: 'Foods',
+      title: 'Regional Foods & Sweets',
+    },
+    {
+      _id: 9010,
+      title: 'Home Decor',
+    },
+    {
+      _id: 9011,
+      title: 'Jewlery & Accessories',
+    },
+    {
+      _id: 9012,
+      title: 'Bags & Luggage',
     },
   ]
 
