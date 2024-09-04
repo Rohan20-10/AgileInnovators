@@ -59,7 +59,7 @@ class _RegisterpageState extends State<Registerpage> {
                   ),
                   Center(
                     child: Text(
-                      "Welcome to Apni Dukaan",
+                      "Welcome to DesiCourier",
                       style: TextStyle(
                         color: Constants().primarycolor,
                         fontWeight: FontWeight.bold,

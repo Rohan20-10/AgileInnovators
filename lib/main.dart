@@ -1,13 +1,23 @@
+
 import 'package:ecommerce/authpages/loginpage.dart';
 import 'package:ecommerce/authpages/seller_address.dart';
 import 'package:ecommerce/authpages/seller_register.dart';
 import 'package:ecommerce/home.dart';
+<<<<<<< Updated upstream
 import 'package:ecommerce/pages/seller/seller_home.dart';
+=======
+import 'package:ecommerce/models/cart_model.dart';
+>>>>>>> Stashed changes
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+      ChangeNotifierProvider(create: (context)=> CartModel(),
+      child: MyApp(),
+      )
+  );
 }
 
 class MyApp extends StatelessWidget {

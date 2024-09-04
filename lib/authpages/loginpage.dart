@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   Center(
                     child: Text(
-                      "Apni Dukaan",
+                      "DesiCourier",
                       style: TextStyle(
                         color: Constants().primarycolor,
                         fontWeight: FontWeight.bold,

@@ -1,12 +1,14 @@
 import 'package:ecommerce/home.dart';
+import 'package:ecommerce/models/cart_model.dart';
 import 'package:ecommerce/pages/cart_page.dart';
 import 'package:ecommerce/widgets/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ItemDetails extends StatefulWidget {
   final String image;
   final String name;
-  final String price;
+  final int price;
   final String rating;
   final String reviews;
 
@@ -26,7 +28,7 @@ class ItemDetails extends StatefulWidget {
 class _ItemDetailsState extends State<ItemDetails> {
   String? selectedReview;
   bool isReviewExpanded = false;
-  int _selectedIndex = 0; // Index for the selected tab
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +76,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                       Padding(
                         padding: const EdgeInsets.only(left: 12.0),
                         child: Text(
-                          "${widget.price}",
+                          "₹${widget.price}",
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w600),
                         ),
@@ -211,75 +213,93 @@ class _ItemDetailsState extends State<ItemDetails> {
               ),
 
               // Fixed Bottom Bar
-
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // Increase/Decrease Quantity Buttons
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Row(
-                        children: [
-                          IconButton(
-                            icon: Icon(Icons.remove, color: Colors.white),
-                            onPressed: () {
-                              // Decrease quantity functionality
-                            },
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Text(
-                              '1', // Update this with the dynamic quantity value
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
+              /*
+              * this the function to handle the state of the cart
+              *
+              * */
+              Consumer<CartModel>(builder:(context,cart,child){
+                var currentitem = cart.getItemCartStatus(widget.name, widget.image, widget.price);
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // Increase/Decrease Quantity Buttons
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Row(
+                          children: [
+                            IconButton(
+                              icon: Icon(Icons.remove, color: Colors.white),
+                              onPressed: () {
+                                // Decrease quantity functionality
+                                  cart.decreaseItem(currentitem);
+                              },
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Text(
+                                currentitem.no_of_item.toString(), // Update this with the dynamic quantity value
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
                               ),
                             ),
-                          ),
-                          IconButton(
-                            icon: Icon(Icons.add, color: Colors.white),
-                            onPressed: () {
-                              // Increase quantity functionality
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                    // Add to Cart Button
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 16.0),
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Constants().primarycolor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
+                            IconButton(
+                              icon: Icon(Icons.add, color: Colors.white),
+                              onPressed: () {
+                                // Increase quantity functionality
+                                cart.addItem(
+                                    name: widget.name,
+                                    image_url: widget.image,
+                                    price: widget.price);
+                              },
                             ),
-                            padding: EdgeInsets.symmetric(vertical: 16.0),
-                          ),
-                          onPressed: () {
-                            // Add to cart functionality
-                          },
-                          child: Text(
-                            'Add to Cart',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
+                          ],
+                        ),
+                      ),
+                      // Add to Cart Button
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 16.0),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Constants().primarycolor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              padding: EdgeInsets.symmetric(vertical: 16.0),
+                            ),
+                            onPressed: () {
+                              // Add to cart functionality
+                              cart.cartitem.contains(currentitem) ? Null :
+                              cart.addItem(name: widget.name,
+                                  image_url: widget.image, price: widget.price);
+                            },
+                            child: Text(
+                              cart.cartitem.contains(currentitem)?
+                              "Added to Cart"
+                              : "Add to Cart",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
+                    ],
+                  ),
+                );
+
+              } )
+
             ],
           ),
           Positioned(

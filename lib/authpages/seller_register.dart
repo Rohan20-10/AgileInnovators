@@ -60,7 +60,7 @@ class _SellerRegisterState extends State<SellerRegister> {
                   ),
                   Center(
                     child: Text(
-                      "Welcome to Apni Dukaan",
+                      "Welcome to DesiCourier",
                       style: TextStyle(
                         color: Constants().primarycolor,
                         fontWeight: FontWeight.bold,
