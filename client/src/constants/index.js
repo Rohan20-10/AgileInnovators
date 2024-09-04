@@ -101,7 +101,7 @@ export const SplOfferData = [
     cat: 'imprimante',
   },
   {
-    _id: '202',
+    _id: '9006',
     img: imprimante2,
     productName: 'Puja Thali',
     price: '180.00',
