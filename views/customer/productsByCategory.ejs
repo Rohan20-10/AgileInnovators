@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products by Category</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Products in <%= category.name %></h1>
+    </header>
+    <main>
+        <div class="product-list">
+            <% products.forEach(product => { %>
+                <div class="product-item">
+                    <h2><%= product.name %></h2>
+                    <p><%= product.description %></p>
+                    <p>Price: <%= product.base_price %> <%= product.base_currency %></p>
+                    <form action="/api/customer/cart/add" method="POST">
+                        <input type="hidden" name="userId" value="<%= user.id %>">
+                        <input type="hidden" name="productId" value="<%= product._id %>">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" name="quantity" id="quantity" value="1" min="1" max="<%= product.stock %>">
+                        <button type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            <% }) %>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Your E-commerce Platform. All rights reserved.</p>
+    </footer>
+</body>
+</html>
