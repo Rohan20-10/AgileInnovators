@@ -106,7 +106,7 @@ const SignIn = () => {
                 Access all Desi Courier services
               </span>
               <br />
-              Buy or sell and be a part of the Desi-Courier fammily.
+              Buy or sell and be a part of the Desi-Courier family.
             </p>
           </div>
           <div className='w-[300px] flex items-start gap-3'>

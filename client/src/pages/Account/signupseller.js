@@ -224,37 +224,35 @@ const SignUp = () => {
                   <input
                     onChange={handleName}
                     value={clientName}
-                    className='w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none'
+                    className='w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-medium border-[1px] border-gray-400 rounded-md focus:outline-primeColor outline-none text-gray-600'
                     type='text'
-                    placeholder='eg. John Doe'
+                    placeholder='Client Name'
                   />
                   {errClientName && (
-                    <p className='text-sm text-red-500 font-titleFont font-semibold px-4'>
-                      <span className='font-bold italic mr-1'>!</span>
+                    <p className='text-red-500 text-sm font-medium'>
                       {errClientName}
                     </p>
                   )}
                 </div>
-                {/* Email */}
+                {/* client email */}
                 <div className='flex flex-col gap-.5'>
                   <p className='font-titleFont text-base font-semibold text-gray-600'>
-                    Work Email
+                    Email Address
                   </p>
                   <input
                     onChange={handleEmail}
                     value={email}
-                    className='w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none'
+                    className='w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-medium border-[1px] border-gray-400 rounded-md focus:outline-primeColor outline-none text-gray-600'
                     type='email'
-                    placeholder='john@workemail.com'
+                    placeholder='Email'
                   />
                   {errEmail && (
-                    <p className='text-sm text-red-500 font-titleFont font-semibold px-4'>
-                      <span className='font-bold italic mr-1'>!</span>
+                    <p className='text-red-500 text-sm font-medium'>
                       {errEmail}
                     </p>
                   )}
                 </div>
-                {/* Phone Number */}
+                {/* client phone number */}
                 <div className='flex flex-col gap-.5'>
                   <p className='font-titleFont text-base font-semibold text-gray-600'>
                     Phone Number
@@ -262,18 +260,17 @@ const SignUp = () => {
                   <input
                     onChange={handlePhone}
                     value={phone}
-                    className='w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none'
+                    className='w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-medium border-[1px] border-gray-400 rounded-md focus:outline-primeColor outline-none text-gray-600'
                     type='text'
-                    placeholder='008801234567891'
+                    placeholder='Phone Number'
                   />
                   {errPhone && (
-                    <p className='text-sm text-red-500 font-titleFont font-semibold px-4'>
-                      <span className='font-bold italic mr-1'>!</span>
+                    <p className='text-red-500 text-sm font-medium'>
                       {errPhone}
                     </p>
                   )}
                 </div>
-                {/* Password */}
+                {/* client password */}
                 <div className='flex flex-col gap-.5'>
                   <p className='font-titleFont text-base font-semibold text-gray-600'>
                     Password
@@ -281,18 +278,17 @@ const SignUp = () => {
                   <input
                     onChange={handlePassword}
                     value={password}
-                    className='w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none'
+                    className='w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-medium border-[1px] border-gray-400 rounded-md focus:outline-primeColor outline-none text-gray-600'
                     type='password'
-                    placeholder='Create password'
+                    placeholder='Password'
                   />
                   {errPassword && (
-                    <p className='text-sm text-red-500 font-titleFont font-semibold px-4'>
-                      <span className='font-bold italic mr-1'>!</span>
+                    <p className='text-red-500 text-sm font-medium'>
                       {errPassword}
                     </p>
                   )}
                 </div>
-                {/* Address */}
+                {/* client address */}
                 <div className='flex flex-col gap-.5'>
                   <p className='font-titleFont text-base font-semibold text-gray-600'>
                     Address
@@ -300,101 +296,97 @@ const SignUp = () => {
                   <input
                     onChange={handleAddress}
                     value={address}
-                    className='w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none'
+                    className='w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-medium border-[1px] border-gray-400 rounded-md focus:outline-primeColor outline-none text-gray-600'
                     type='text'
-                    placeholder='road-001, house-115, example area'
+                    placeholder='Address'
                   />
                   {errAddress && (
-                    <p className='text-sm text-red-500 font-titleFont font-semibold px-4'>
-                      <span className='font-bold italic mr-1'>!</span>
+                    <p className='text-red-500 text-sm font-medium'>
                       {errAddress}
                     </p>
                   )}
                 </div>
-                {/* City */}
+                {/* client city */}
                 <div className='flex flex-col gap-.5'>
                   <p className='font-titleFont text-base font-semibold text-gray-600'>
-                    GST No.
+                    City
                   </p>
                   <input
                     onChange={handleCity}
                     value={city}
-                    className='w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none'
+                    className='w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-medium border-[1px] border-gray-400 rounded-md focus:outline-primeColor outline-none text-gray-600'
                     type='text'
-                    placeholder='Your GST Number'
+                    placeholder='City'
                   />
                   {errCity && (
-                    <p className='text-sm text-red-500 font-titleFont font-semibold px-4'>
-                      <span className='font-bold italic mr-1'>!</span>
+                    <p className='text-red-500 text-sm font-medium'>
                       {errCity}
                     </p>
                   )}
                 </div>
-                {/* Country */}
-                <div className='flex flex-col gap-.5'>
-                  <p className='font-titleFont text-base font-semibold text-gray-600'>
-                    MSME id
-                  </p>
-                  <input
-                    onChange={handleCountry}
-                    value={country}
-                    className='w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none'
-                    type='text'
-                    placeholder='Your MSME id'
-                  />
-                  {errCountry && (
-                    <p className='text-sm text-red-500 font-titleFont font-semibold px-4'>
-                      <span className='font-bold italic mr-1'>!</span>
-                      {errCountry}
-                    </p>
-                  )}
-                </div>
-                {/* Zip code */}
+                {/* client country */}
                 <div className='flex flex-col gap-.5'>
                   <p className='font-titleFont text-base font-semibold text-gray-600'>
                     Country
                   </p>
                   <input
-                    onChange={handleZip}
-                    value={zip}
-                    className='w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none'
+                    onChange={handleCountry}
+                    value={country}
+                    className='w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-medium border-[1px] border-gray-400 rounded-md focus:outline-primeColor outline-none text-gray-600'
                     type='text'
-                    placeholder='Your country'
+                    placeholder='Country'
                   />
-                  {errZip && (
-                    <p className='text-sm text-red-500 font-titleFont font-semibold px-4'>
-                      <span className='font-bold italic mr-1'>!</span>
-                      {errZip}
+                  {errCountry && (
+                    <p className='text-red-500 text-sm font-medium'>
+                      {errCountry}
                     </p>
                   )}
                 </div>
-                {/* Checkbox */}
-                <div className='flex items-start mdl:items-center gap-2'>
+                {/* client zip code */}
+                <div className='flex flex-col gap-.5'>
+                  <p className='font-titleFont text-base font-semibold text-gray-600'>
+                    Zip Code
+                  </p>
+                  <input
+                    onChange={handleZip}
+                    value={zip}
+                    className='w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-medium border-[1px] border-gray-400 rounded-md focus:outline-primeColor outline-none text-gray-600'
+                    type='text'
+                    placeholder='Zip Code'
+                  />
+                  {errZip && (
+                    <p className='text-red-500 text-sm font-medium'>{errZip}</p>
+                  )}
+                </div>
+                {/* checked box */}
+                <div className='flex items-center gap-3 pt-2'>
                   <input
                     onChange={() => setChecked(!checked)}
-                    className='w-4 h-4 mt-1 mdl:mt-0 cursor-pointer'
                     type='checkbox'
+                    className='w-4 h-4 bg-white text-primeColor focus:outline-none cursor-pointer'
                   />
-                  <p className='text-sm text-primeColor'>
-                    I agree to the Desi Couriers{' '}
-                    <span className='text-blue-500'>Terms of Service </span>and{' '}
-                    <span className='text-blue-500'>Privacy Policy</span>.
+                  <p className='text-base font-titleFont font-semibold'>
+                    Agree with
+                    <span className='text-primeColor hover:underline'>
+                      Terms & Conditions
+                    </span>
                   </p>
                 </div>
+                {/* sign up button */}
                 <button
                   onClick={handleSignUp}
                   className={`${
                     checked
-                      ? 'bg-primeColor hover:bg-black hover:text-white cursor-pointer'
+                      ? 'bg-[#FF660E] hover:bg-gray-500 cursor-pointer'
                       : 'bg-gray-500 hover:bg-gray-500 hover:text-gray-200 cursor-none'
                   } w-full text-gray-200 text-base font-medium h-10 rounded-md hover:text-white duration-300`}
                 >
                   Create Account
                 </button>
-                <p className='text-sm text-center font-titleFont font-medium'>
-                  Already have an Account?{' '}
+                <p className='text-base font-medium text-gray-500'>
+                  Already have an account?{' '}
                   <Link to='/signin'>
-                    <span className='hover:text-blue-600 duration-300'>
+                    <span className='text-primeColor hover:underline'>
                       Sign in
                     </span>
                   </Link>

@@ -10,7 +10,7 @@ const CustomSlide = ({ Subtext, imgSrc, text, buttonLink, buttonText }) => (
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      height: '100vh', // Ensures the banner takes up the full viewport height
+      height: '60vh', // Adjusted height
       overflow: 'hidden',
     }}
   >
@@ -194,7 +194,7 @@ const Banner = () => {
       imgSrc: womanpottery,
       text: 'Your Gateway to Authentic Indian Artistry',
       Subtext:
-        'Empowering Small Businesses and Connecting You to the Heart of India. ',
+        'Empowering Small Businesses and Connecting You to the Heart of India.',
       buttonLink: '/contact',
       buttonText: 'Contact-us',
     },

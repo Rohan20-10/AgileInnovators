@@ -54,55 +54,55 @@ const NewArrivals = () => {
           <Product
             _id='100001'
             img={newArrOne}
-            productName='Round Table Clock'
-            price='44.00'
-            color='Black'
+            productName='Mango Pickel'
+            price='250.00'
+            color='Regional Foods & Sweets'
             badge={true}
-            des='Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.'
+            des='250gm of mango pickel made from fresh kachhi kairi with musturd oil.'
           />
         </div>
         <div className='px-2'>
           <Product
             _id='100002'
             img={newArrTwo}
-            productName='Smart Watch'
-            price='250.00'
-            color='Black'
+            productName='Parkar Polka'
+            price='2500.00'
+            color='Traditional Attire'
             badge={true}
-            des='Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.'
+            des='Cotton fabric'
           />
         </div>
         <div className='px-2'>
           <Product
             _id='100003'
             img={newArrThree}
-            productName='cloth Basket'
-            price='80.00'
-            color='Mixed'
+            productName='Agarbatti'
+            price='180.00'
+            color='Puja Samagri'
             badge={true}
-            des='Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.'
+            des='Sandalwood essence special.'
           />
         </div>
         <div className='px-2'>
           <Product
             _id='100004'
             img={newArrFour}
-            productName='Funny toys for babies'
-            price='60.00'
-            color='Mixed'
+            productName='Diwali Lamp'
+            price='620.00'
+            color='Festive Items'
             badge={false}
-            des='Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.'
+            des='Description'
           />
         </div>
         <div className='px-2'>
           <Product
             _id='100005'
             img={newArrTwo}
-            productName='Funny toys for babies'
-            price='60.00'
-            color='Mixed'
-            badge={false}
-            des='Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis.'
+            productName='Parkar Polka'
+            price='2500.00'
+            color='Traditional Attire'
+            badge={true}
+            des='Description here'
           />
         </div>
       </Slider>
