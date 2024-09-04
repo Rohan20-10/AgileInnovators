@@ -1,22 +1,29 @@
-import 'package:flutter/cupertino.dart';
+
+
+import 'package:ecommerce/authpages/loginpage.dart';
+import 'package:ecommerce/authpages/seller_register.dart';
+import 'package:ecommerce/widgets/constants.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+
+import '../pages/seller/seller_home.dart';
 
 class SellerLogin extends StatelessWidget {
   const SellerLogin({super.key});
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< Updated upstream
-    return const Placeholder();
-=======
     final Size size = MediaQuery.of(context).size;
     final height = size.height;
     final width = size.width;
+
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/img/loginimage.jpeg"),
-              fit: BoxFit.cover),
+            image: AssetImage("assets/img/loginimage.jpeg"),
+            fit: BoxFit.cover,
+          ),
         ),
         height: height,
         width: width,
@@ -25,25 +32,22 @@ class SellerLogin extends StatelessWidget {
             width: width * 0.95,
             height: height * 0.6,
             decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
-                    spreadRadius: 5,
-                    blurRadius: 10,
-                  )
-                ],
-                color: Colors.white.withOpacity(0.82),
-                borderRadius: BorderRadius.circular(10)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.3),
+                  spreadRadius: 5,
+                  blurRadius: 10,
+                ),
+              ],
+              color: Colors.white.withOpacity(0.82),
+              borderRadius: BorderRadius.circular(10),
+            ),
             child: Form(
-              // form key
+              // Add your form key here if needed
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // login image
-                  // Placeholder(),
-                  const SizedBox(
-                    height: 15,
-                  ),
+                  const SizedBox(height: 15),
                   Center(
                     child: Text(
                       "DesiCourier(Seller)",
@@ -54,9 +58,7 @@ class SellerLogin extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 15,
-                  ),
+                  const SizedBox(height: 15),
                   Padding(
                     padding: const EdgeInsets.only(left: 8),
                     child: Text(
@@ -71,7 +73,6 @@ class SellerLogin extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: TextFormField(
-                      // email validator
                       keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(
@@ -85,9 +86,7 @@ class SellerLogin extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 25,
-                  ),
+                  const SizedBox(height: 25),
                   Padding(
                     padding: const EdgeInsets.only(left: 8),
                     child: Text(
@@ -102,15 +101,13 @@ class SellerLogin extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: TextFormField(
-                      //password validator
+                      obscureText: true, // Toggle visibility code to be added
                       validator: (val) {
                         if (val!.length < 6) {
                           return "Password must be at least 6 characters";
-                        } else {
-                          return null;
                         }
+                        return null;
                       },
-                      obscureText: _obscure,
                       decoration: InputDecoration(
                         border: const OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.black),
@@ -121,39 +118,31 @@ class SellerLogin extends StatelessWidget {
                         hintStyle: const TextStyle(fontSize: 14),
                         hintText: "Enter your password",
                         suffixIcon: IconButton(
-                          onPressed: _togglePasswordVisibility,
-                          icon: Icon(_obscure
-                              ? Icons.visibility_off
-                              : Icons.visibility), //password visibility
+                          onPressed: () {
+                            // Add toggle functionality for password visibility
+                          },
+                          icon: const Icon(Icons.visibility_off), // Placeholder icon change as needed
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 8,
-                  ),
+                  const SizedBox(height: 8),
                   Padding(
                     padding: const EdgeInsets.only(left: 8.0),
                     child: RichText(
                       text: TextSpan(
                         text: 'Forgot Password?',
-                        // recognizer for forgot password
                         style: TextStyle(
                           fontSize: 16,
-
                           color: Constants().primarycolor,
                           decoration: TextDecoration.underline,
-                          decorationColor:
-                              Constants().primarycolor, // Underline color
-                          decorationThickness: 1, // Thickness of the underline
+                          decorationColor: Constants().primarycolor,
+                          decorationThickness: 1,
                         ),
                       ),
                     ),
                   ),
-
-                  const SizedBox(
-                    height: 40,
-                  ),
+                  const SizedBox(height: 40),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: SizedBox(
@@ -167,8 +156,10 @@ class SellerLogin extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Bottombar()));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => SellerHome()),
+                          );
                         },
                         child: const Text(
                           "Sign In",
@@ -180,12 +171,9 @@ class SellerLogin extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 22,
-                  ),
+                  const SizedBox(height: 22),
                   Center(
                     child: Text.rich(
-                      textAlign: TextAlign.center,
                       TextSpan(
                         text: "Don't have an account? ",
                         style: const TextStyle(
@@ -203,22 +191,20 @@ class SellerLogin extends StatelessWidget {
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
                                 Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const SellerRegister()));
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const SellerRegister(),
+                                  ),
+                                );
                               },
-                          )
+                          ),
                         ],
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 22,
-                  ),
+                  const SizedBox(height: 22),
                   Center(
                     child: Text.rich(
-                      textAlign: TextAlign.center,
                       TextSpan(
                         text: "Want to Login as a buyer? ",
                         style: const TextStyle(
@@ -236,12 +222,13 @@ class SellerLogin extends StatelessWidget {
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
                                 Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const LoginPage()));
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const LoginPage(),
+                                  ),
+                                );
                               },
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -253,6 +240,5 @@ class SellerLogin extends StatelessWidget {
         ),
       ),
     );
->>>>>>> Stashed changes
   }
 }
