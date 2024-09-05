@@ -1,7 +1,11 @@
 import 'package:ecommerce/authpages/loginpage.dart';
 import 'package:ecommerce/authpages/seller_address.dart';
+import 'package:ecommerce/authpages/seller_login.dart';
 import 'package:ecommerce/authpages/seller_register.dart';
 import 'package:ecommerce/home.dart';
+import 'package:ecommerce/pages/seller/bottombar.dart';
+import 'package:ecommerce/pages/seller/order.dart';
+import 'package:ecommerce/pages/seller/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: Profile(),
     );
   }
 }

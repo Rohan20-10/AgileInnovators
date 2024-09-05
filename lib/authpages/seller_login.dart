@@ -2,6 +2,7 @@ import 'package:ecommerce/authpages/loginpage.dart';
 import 'package:ecommerce/authpages/seller_register.dart';
 import 'package:ecommerce/pages/seller/bottombar.dart';
 import 'package:ecommerce/widgets/constants.dart';
+import 'package:ecommerce/api/api_service.dart'; // Make sure to import ApiService
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -14,14 +15,42 @@ class SellerLogin extends StatefulWidget {
 }
 
 class _SellerLoginState extends State<SellerLogin> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
   bool _obscure = true;
+  final ApiService _apiService = ApiService(); // Create an instance of ApiService
 
-  @override
   void _togglePasswordVisibility() {
     setState(() {
       _obscure = !_obscure;
     });
   }
+
+  Future<void> _login() async {
+    final email = _emailController.text;
+    final password = _passwordController.text;
+
+    try {
+      final response = await _apiService.loginMerchant(email, password);
+      if (response['message'] == 'Login successful') {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Bottombar()),
+        );
+      } else {
+        // Show error message
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(response['message'])),
+        );
+      }
+    } catch (e) {
+      // Handle error
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Login failed')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -39,7 +68,7 @@ class _SellerLoginState extends State<SellerLogin> {
         child: Center(
           child: Container(
             width: width * 0.95,
-            height: height * 0.6,
+            height: height * 0.57,
             decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
@@ -51,12 +80,9 @@ class _SellerLoginState extends State<SellerLogin> {
                 color: Colors.white.withOpacity(0.82),
                 borderRadius: BorderRadius.circular(10)),
             child: Form(
-              // form key
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // login image
-                  // Placeholder(),
                   const SizedBox(
                     height: 15,
                   ),
@@ -87,7 +113,7 @@ class _SellerLoginState extends State<SellerLogin> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: TextFormField(
-                      // email validator
+                      controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(
@@ -118,7 +144,7 @@ class _SellerLoginState extends State<SellerLogin> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: TextFormField(
-                      //password validator
+                      controller: _passwordController,
                       validator: (val) {
                         if (val!.length < 6) {
                           return "Password must be at least 6 characters";
@@ -140,7 +166,7 @@ class _SellerLoginState extends State<SellerLogin> {
                           onPressed: _togglePasswordVisibility,
                           icon: Icon(_obscure
                               ? Icons.visibility_off
-                              : Icons.visibility), //password visibility
+                              : Icons.visibility),
                         ),
                       ),
                     ),
@@ -153,20 +179,17 @@ class _SellerLoginState extends State<SellerLogin> {
                     child: RichText(
                       text: TextSpan(
                         text: 'Forgot Password?',
-                        // recognizer for forgot password
                         style: TextStyle(
                           fontSize: 16,
-
                           color: Constants().primarycolor,
                           decoration: TextDecoration.underline,
                           decorationColor:
-                              Constants().primarycolor, // Underline color
-                          decorationThickness: 1, // Thickness of the underline
+                              Constants().primarycolor,
+                          decorationThickness: 1,
                         ),
                       ),
                     ),
                   ),
-
                   const SizedBox(
                     height: 40,
                   ),
@@ -182,10 +205,7 @@ class _SellerLoginState extends State<SellerLogin> {
                             borderRadius: BorderRadius.circular(11),
                           ),
                         ),
-                        onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Bottombar()));
-                        },
+                        onPressed: _login, // Call _login on button press
                         child: const Text(
                           "Sign In",
                           style: TextStyle(

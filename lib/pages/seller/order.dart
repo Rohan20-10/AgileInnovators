@@ -1,33 +1,38 @@
 import 'package:ecommerce/widgets/constants.dart';
 import 'package:flutter/material.dart';
 
-class Order extends StatelessWidget {
+class Order extends StatefulWidget {
+  @override
+  _OrderState createState() => _OrderState();
+}
+
+class _OrderState extends State<Order> {
+  String _selectedStatus = 'All';
+
   // Sample order data
-  final List<Map<String, String>> currentOrders = [
-    {
-      "orderId": "12345",
-      "totalPrice": "\$250",
-      "status": "Processing",
-    },
-    {
-      "orderId": "67890",
-      "totalPrice": "\$150",
-      "status": "Shipped",
-    },
+  final List<Map<String, dynamic>> allOrders = [
+    {"orderId": "12345", "totalPrice": 250.0, "status": "Processing"},
+    {"orderId": "67890", "totalPrice": 150.0, "status": "Shipped"},
+    {"orderId": "54321", "totalPrice": 300.0, "status": "Delivered"},
+    {"orderId": "98765", "totalPrice": 100.0, "status": "Delivered"},
+    {"orderId": "11223", "totalPrice": 175.0, "status": "Processing"},
+    {"orderId": "44556", "totalPrice": 200.0, "status": "Shipped"},
+    {"orderId": "77889", "totalPrice": 130.0, "status": "Delivered"},
+    {"orderId": "99001", "totalPrice": 250.0, "status": "Processing"},
   ];
 
-  final List<Map<String, String>> previousOrders = [
-    {
-      "orderId": "54321",
-      "totalPrice": "\$300",
-      "status": "Delivered",
-    },
-    {
-      "orderId": "98765",
-      "totalPrice": "\$100",
-      "status": "Delivered",
-    },
+  final List<Map<String, dynamic>> previousOrders = [
+    {"orderId": "54321", "totalPrice": 300.0, "status": "Delivered"},
+    {"orderId": "98765", "totalPrice": 100.0, "status": "Delivered"},
+    {"orderId": "77889", "totalPrice": 130.0, "status": "Delivered"},
   ];
+
+  List<Map<String, dynamic>> get filteredOrders {
+    if (_selectedStatus == 'All') {
+      return allOrders;
+    }
+    return allOrders.where((order) => order['status'] == _selectedStatus).toList();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +47,7 @@ class Order extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
+          // Current Orders Section
           Text(
             "Current Orders",
             style: TextStyle(
@@ -50,8 +56,37 @@ class Order extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10),
-          ...currentOrders.map((order) => OrderCard(order: order)).toList(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Filter:",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              DropdownButton<String>(
+                value: _selectedStatus,
+                items: <String>['All', 'Processing', 'Shipped', 'Delivered']
+                    .map((status) => DropdownMenuItem<String>(
+                          value: status,
+                          child: Text(status),
+                        ))
+                    .toList(),
+                onChanged: (value) {
+                  setState(() {
+                    _selectedStatus = value!;
+                  });
+                },
+              ),
+            ],
+          ),
+          SizedBox(height: 10),
+          ...filteredOrders.map((order) => OrderCard(order: order)).toList(),
           SizedBox(height: 20),
+
+          // Previous Orders Section
           Text(
             "Previous Orders",
             style: TextStyle(
@@ -68,7 +103,7 @@ class Order extends StatelessWidget {
 }
 
 class OrderCard extends StatelessWidget {
-  final Map<String, String> order;
+  final Map<String, dynamic> order;
 
   OrderCard({required this.order});
 
@@ -93,7 +128,7 @@ class OrderCard extends StatelessWidget {
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Total Price: ${order['totalPrice']}"),
+            Text("Total Price: \$${order['totalPrice']}"),
             Text("Status: ${order['status']}"),
           ],
         ),
@@ -112,27 +147,20 @@ class OrderCard extends StatelessWidget {
 }
 
 class OrderDetailsPage extends StatelessWidget {
-  final Map<String, String> order;
+  final Map<String, dynamic> order;
 
   OrderDetailsPage({required this.order});
 
   @override
   Widget build(BuildContext context) {
     // Sample order item data
-    final List<Map<String, String>> orderItems = [
-      {
-        "name": "Product 1",
-        "quantity": "2",
-        "price": "\$50",
-        "image": "assets/img/Product1.jpg",
-      },
-      {
-        "name": "Product 2",
-        "quantity": "1",
-        "price": "\$100",
-        "image": "assets/img/Product2.jpg",
-      },
+    final List<Map<String, dynamic>> orderItems = [
+      {"name": "Product 1", "quantity": 2, "price": 50.0, "image": "assets/img/Product1.jpg"},
+      {"name": "Product 2", "quantity": 1, "price": 100.0, "image": "assets/img/Product2.jpg"},
     ];
+
+    // Calculate total price
+    final double totalPrice = orderItems.fold(0.0, (sum, item) => sum + item["price"]! * item["quantity"]!);
 
     // Sample delivery address
     final String deliveryAddress = "123 International Road, New York, USA";
@@ -223,7 +251,7 @@ class OrderDetailsPage extends StatelessWidget {
                     Divider(color: Colors.grey),
                     SizedBox(height: 10),
                     Text(
-                      "Total Price: ${order['totalPrice']}",
+                      "Total Price: \$${totalPrice}",
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -242,7 +270,7 @@ class OrderDetailsPage extends StatelessWidget {
 }
 
 class OrderItemCard extends StatelessWidget {
-  final Map<String, String> item;
+  final Map<String, dynamic> item;
 
   OrderItemCard({required this.item});
 
@@ -291,7 +319,7 @@ class OrderItemCard extends StatelessWidget {
                 ),
                 SizedBox(height: 8),
                 Text(
-                  "Price: ${item['price']}",
+                  "Price: \$${item['price']}",
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.grey[600],

@@ -1,7 +1,9 @@
+import 'package:ecommerce/api/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:ecommerce/widgets/constants.dart';
+import 'products.dart';  // Assuming Products page is in the same directory
 
 class AddProductPage extends StatefulWidget {
   @override
@@ -12,9 +14,12 @@ class _AddProductPageState extends State<AddProductPage> {
   final _nameController = TextEditingController();
   final _priceController = TextEditingController();
   final _descriptionController = TextEditingController();
+  final _categoryController = TextEditingController();
+  final _stockController = TextEditingController();
   File? _imageFile;
 
   final ImagePicker _picker = ImagePicker();
+  final ApiService _apiService = ApiService();
 
   Future<void> _pickImage(ImageSource source) async {
     final pickedFile = await _picker.pickImage(source: source);
@@ -24,6 +29,42 @@ class _AddProductPageState extends State<AddProductPage> {
       });
     }
   }
+
+Future<void> _addProduct() async {
+  if (_imageFile == null) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text('Please select an image'),
+    ));
+    return;
+  }
+
+  try {
+    final response = await _apiService.addProduct(
+      name: _nameController.text,
+      description: _descriptionController.text,
+      category: _categoryController.text,
+      price: _priceController.text,
+      stock: int.parse(_stockController.text),
+      imageFile: _imageFile!,
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text('Product added successfully'),
+    ));
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => Products()), // Redirect to Products page
+    );
+  } catch (e) {
+    print('Error adding product: $e');
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text('Failed to add product'),
+    ));
+  }
+}
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +100,31 @@ class _AddProductPageState extends State<AddProductPage> {
                   controller: _priceController,
                   decoration: InputDecoration(
                     labelText: 'Price',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  ),
+                  keyboardType: TextInputType.number,
+                ),
+                SizedBox(height: 16),
+                TextField(
+                  controller: _categoryController,
+                  decoration: InputDecoration(
+                    labelText: 'Category',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  ),
+                ),
+                SizedBox(height: 16),
+                TextField(
+                  controller: _stockController,
+                  decoration: InputDecoration(
+                    labelText: 'Stock',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -113,8 +179,7 @@ class _AddProductPageState extends State<AddProductPage> {
                     ElevatedButton(
                       onPressed: () => _pickImage(ImageSource.gallery),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            Colors.blueAccent, // Change to desired color
+                        backgroundColor: Colors.blueAccent,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
@@ -129,8 +194,7 @@ class _AddProductPageState extends State<AddProductPage> {
                     ElevatedButton(
                       onPressed: () => _pickImage(ImageSource.camera),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            Colors.blueAccent, // Change to desired color
+                        backgroundColor: Colors.blueAccent,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
@@ -147,10 +211,7 @@ class _AddProductPageState extends State<AddProductPage> {
                 SizedBox(height: 20),
                 Center(
                   child: ElevatedButton(
-                    onPressed: () {
-                      // Handle adding the product with _nameController.text,
-                      // _priceController.text, _descriptionController.text, and _imageFile
-                    },
+                    onPressed: _addProduct,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Constants().orange,
                       shape: RoundedRectangleBorder(
